@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans Variable", "Inter Variable", system-ui, sans-serif;
+
+  /* PayServe brand: deep navy + warm orange, in a RealPage-style corporate system */
+  --color-navy-950: #000a2b;
+  --color-navy-900: #001858;
+  --color-navy-800: #0b2a80;
+  --color-navy-700: #1a3fa3;
+  --color-navy-100: #e6ecfa;
+  --color-navy-50: #f2f5fd;
+  --color-brand: #001858;
+  --color-accent: #f09820;
+  --color-accent-600: #d9820c;
+  --color-accent-50: #fff6e8;
+  --color-sky: #4cc3ff;
+  --color-ink: #0f1729;
+  --color-body: #3b4458;
+  --color-muted: #667085;
+  --color-line: #e3e7ef;
+  --color-surface: #f5f7fb;
+  --color-success: #16a34a;
+
+  --shadow-card: 0 1px 2px rgb(0 24 88 / 0.06), 0 8px 24px -8px rgb(0 24 88 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(0 24 88 / 0.06), 0 24px 48px -16px rgb(0 24 88 / 0.25);
+
+  --animate-marquee: marquee 50s linear infinite;
+  --animate-rise: rise 0.7s ease both;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
+
+.bg-hero {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgb(76 195 255 / 0.28), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgb(240 152 32 / 0.22), transparent 60%),
+    linear-gradient(160deg, #001858 0%, #000a2b 70%);
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.marquee-mask { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Article body */
+.prose-ps { font-size: 1.125rem; line-height: 1.75; color: #262a35; }
+.prose-ps > * + * { margin-top: 1.25rem; }
+.prose-ps h2 { font-size: 1.75rem; line-height: 1.25; font-weight: 700; color: var(--color-ink); margin-top: 2.75rem; scroll-margin-top: 7rem; }
+.prose-ps ul, .prose-ps ol { padding-left: 1.5rem; }
+.prose-ps ul { list-style: disc; }
+.prose-ps ol { list-style: decimal; }
+.prose-ps li + li { margin-top: 0.6rem; }
+.prose-ps strong { color: var(--color-ink); }
+.prose-ps mark { background: #ffe45c; padding: 0 3px; border-radius: 3px; }
+.prose-ps .table-wrap { overflow-x: auto; border: 1px solid var(--color-line); border-radius: 12px; }
+.prose-ps table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.prose-ps th { text-align: left; background: var(--color-surface); padding: 12px 14px; border-bottom: 1px solid var(--color-line); }
+.prose-ps td { padding: 12px 14px; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+.prose-ps tr:last-child td { border-bottom: 0; }
+.prose-ps ul.checklist { list-style: none; padding-left: 0; }
+.prose-ps ul.checklist li { position: relative; padding-left: 2rem; }
+.prose-ps ul.checklist li::before {
+  content: ""; position: absolute; left: 0; top: 0.35em; width: 1.1rem; height: 1.1rem;
+  border: 2px solid var(--color-navy-900); border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .marquee-track { flex-wrap: wrap; width: auto !important; }
+  .marquee-track [aria-hidden="true"] { display: none; }
+}
