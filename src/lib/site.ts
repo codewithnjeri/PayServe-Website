@@ -50,6 +50,7 @@ export const productsMenu = {
     title: "Reminders your customers actually see",
     href: "/invoicing#ontime",
     cta: "See PayServe OnTime",
+    visual: "phone" as const,
   },
   footerLinks: [
     { label: "Every business we work with", href: "/invoicing/industries" },
@@ -100,6 +101,7 @@ export const realEstateMenu = {
     title: "How Altura gets paid on time, every month",
     href: "/real-estate#case",
     cta: "Read the story",
+    image: { src: "/images/projects/altura-day.jpg", alt: "Altura tower, Upper Hill" },
   },
   footerLinks: [
     { label: "PayServe for Real Estate", href: "/real-estate" },
@@ -132,6 +134,7 @@ export const resourcesMenu = {
     title: "How to get paid on time in Kenya: 7 habits",
     href: "/blog/get-paid-on-time-kenya",
     cta: "Read the guide",
+    visual: "checklist" as const,
   },
 };
 

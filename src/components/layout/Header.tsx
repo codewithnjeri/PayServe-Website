@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -7,17 +8,18 @@ import { ArrowRight, Building2, ChevronDown, Home, LogIn, Menu, X } from "lucide
 import { contactMenu, loginLinks, productsMenu, realEstateMenu, resourcesMenu, type NavLink } from "@/lib/site";
 import { cx } from "../ui";
 import { Logo } from "./Logo";
+import { MiniHabitsChecklist, MiniPhoneReminder } from "../visuals";
 
 type Menu = {
   groups: { title?: string; links: NavLink[] }[];
-  feature?: { eyebrow: string; title: string; href: string; cta: string };
+  feature?: { eyebrow: string; title: string; href: string; cta: string; visual?: "phone" | "checklist"; image?: { src: string; alt: string } };
   footerLinks?: NavLink[];
 };
 
 const menus: { key: string; label: string; menu: Menu; match: string[]; width: string; compact?: boolean }[] = [
   { key: "products", label: "Products", menu: productsMenu, match: ["/invoicing"], width: "lg:w-[860px]" },
   { key: "realestate", label: "Real Estate", menu: realEstateMenu, match: ["/real-estate", "/smart-meters", "/access-control"], width: "lg:w-[1040px]" },
-  { key: "resources", label: "Resources", menu: resourcesMenu, match: ["/blog", "/support-resources"], width: "lg:w-[640px]" },
+  { key: "resources", label: "Resources", menu: resourcesMenu, match: ["/blog", "/support-resources"], width: "lg:w-[720px]" },
   { key: "contact", label: "Contact", menu: contactMenu, match: [], width: "lg:w-80", compact: true },
 ];
 
@@ -46,7 +48,20 @@ function MenuPanel({ menu, onNavigate }: { menu: Menu; onNavigate: () => void })
         ))}
         {menu.feature && (
           <Link href={menu.feature.href} onClick={onNavigate} className="bg-hero group relative mt-2 flex min-h-48 flex-col justify-end overflow-hidden rounded-xl p-5 text-white lg:mt-0">
-            <div className="bg-grid absolute inset-0 opacity-50" />
+            {menu.feature.image ? (
+              <>
+                <Image src={menu.feature.image.src} alt={menu.feature.image.alt} fill sizes="(min-width: 1024px) 280px, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent" />
+              </>
+            ) : (
+              <div className="bg-grid absolute inset-0 opacity-50" />
+            )}
+            {menu.feature.visual === "phone" && (
+              <MiniPhoneReminder className="relative mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-1" />
+            )}
+            {menu.feature.visual === "checklist" && (
+              <MiniHabitsChecklist className="relative mx-auto mb-6 transition-transform duration-300 group-hover:-translate-y-1" />
+            )}
             <span className="relative text-[11px] font-bold uppercase tracking-[0.14em] text-accent">{menu.feature.eyebrow}</span>
             <span className="relative mt-2 font-display text-lg font-bold leading-snug">{menu.feature.title}</span>
             <span className="relative mt-3 inline-flex items-center gap-1 text-sm font-semibold">

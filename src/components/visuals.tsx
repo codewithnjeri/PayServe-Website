@@ -50,7 +50,7 @@ export function PhoneReminder({ className }: { className?: string }) {
         <div className="flex items-center gap-3 rounded-t-[1.9rem] bg-[#075e54] px-4 pb-3 pt-5 text-white">
           <div className="grid size-9 place-items-center rounded-full bg-white/20 text-xs font-bold">PS</div>
           <div className="leading-tight">
-            <p className="text-sm font-semibold">Altura Property</p>
+            <p className="text-sm font-semibold">PayServe</p>
             <p className="text-[11px] text-white/70">via PayServe OnTime</p>
           </div>
         </div>
@@ -76,6 +76,56 @@ export function PhoneReminder({ className }: { className?: string }) {
         <p className="mt-1 text-sm">Pay <b>KES 45,000</b> to PayServe acc. B1204?</p>
         <div className="mt-3 rounded-md bg-surface px-3 py-2 font-mono text-sm tracking-[0.4em] text-muted">••••</div>
       </Card>
+    </div>
+  );
+}
+
+/* Small phone for the Products menu: the same reminder as PhoneReminder, at menu size. */
+export function MiniPhoneReminder({ className }: { className?: string }) {
+  return (
+    <div className={cx("w-[176px] text-ink", className)} aria-label="A PayServe OnTime reminder on WhatsApp with a Pay now button" role="img">
+      <div className="overflow-hidden rounded-[1.6rem] border-[6px] border-navy-950 bg-[#efeae2] shadow-lift">
+        <div className="flex items-center gap-2 bg-[#075e54] px-3 pb-2 pt-3 text-white">
+          <div className="grid size-6 place-items-center rounded-full bg-white/20 text-[9px] font-bold">PS</div>
+          <div className="leading-tight">
+            <p className="text-[11px] font-semibold">PayServe</p>
+            <p className="text-[9px] text-white/70">via PayServe OnTime</p>
+          </div>
+        </div>
+        <div className="px-2 pb-4 pt-2.5">
+          <div className="max-w-[94%] rounded-lg rounded-tl-sm bg-white p-2 text-[10px] leading-snug shadow-sm">
+            <p>Hi Wanjiru 👋 your invoice <b>INV-2048</b> for unit B-1204 is due on <b>5 Dec</b>.</p>
+            <p className="mt-1 text-[15px] font-bold tracking-tight">KES 45,000</p>
+            <div className="mt-1.5 rounded-md bg-[#25d366] py-1 text-center text-[10px] font-bold text-white">Pay now</div>
+            <p className="mt-1 text-right text-[8px] text-muted">09:00 ✓✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* Small checklist for the Resources menu: habits from the "get paid on time" guide's own checklist. */
+export function MiniHabitsChecklist({ className }: { className?: string }) {
+  const habits = [
+    "One fixed billing day",
+    "Every invoice through KRA eTIMS",
+    "Reminders before the due date",
+    "A Pay now link in every reminder",
+  ];
+  return (
+    <div className={cx("w-full max-w-[200px] rotate-[-2deg] rounded-xl bg-white p-3.5 text-ink shadow-lift", className)} aria-label="Checklist from the guide: 7 habits to get paid on time" role="img">
+      <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-navy-700">Checklist</p>
+      <p className="mt-0.5 font-display text-[13px] font-bold leading-snug">7 habits to get paid on time</p>
+      <ul className="mt-2.5 space-y-1.5">
+        {habits.map((h) => (
+          <li key={h} className="flex items-start gap-1.5 text-[10.5px] leading-snug">
+            <CheckCircle2 className="mt-px size-3.5 shrink-0 text-success" aria-hidden />
+            {h}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-2 border-t border-line pt-1.5 text-[10px] font-semibold text-muted">+ 3 more habits</p>
     </div>
   );
 }

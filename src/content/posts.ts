@@ -17,6 +17,7 @@ export const posts: Record<string, PostCard> = {
     title: "Smart water meters for apartments in Kenya: a practical guide for property managers",
     excerpt: "Prepaid or postpaid, what to check before you install, and how residents pay by M-Pesa.",
     meta: "PayServe team · 8 min read",
+    cover: { src: "/images/meters/lora-water-meter.jpg", alt: "PayServe LoRa smart water meter" },
   },
   water: {
     slug: "reduce-non-revenue-water",
@@ -25,6 +26,7 @@ export const posts: Record<string, PostCard> = {
     excerpt:
       "Phnom Penh cut losses from 72% to 6% and Casablanca saved water for 100,000 people. The same playbook works in your building.",
     meta: "PayServe team · 9 min read",
+    cover: { src: "/images/meters/three-phase-power-meter.jpg", alt: "Three-phase prepaid power meter" },
   },
 };
 

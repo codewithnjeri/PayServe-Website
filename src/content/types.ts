@@ -19,5 +19,7 @@ export type PostCard = {
   category: string;
   excerpt: string;
   meta: string;
+  /** Product photo on a white background, shown whole on the card. */
+  cover?: { src: string; alt: string };
   planned?: boolean;
 };

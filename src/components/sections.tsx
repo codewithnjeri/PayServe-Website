@@ -83,7 +83,13 @@ export function CtaBand({ title, text, secondary, demoHref = "/book-demo" }: { t
 export function PostCardView({ post, size = "md" }: { post: PostCard; size?: "md" | "lg" }) {
   const inner = (
     <>
-      <ImageSlot label="Cover image" tone={post.category.length} icon={post.category.includes("meter") || post.category.includes("Water") ? "water" : "building"} className={cx("rounded-none", size === "lg" ? "h-56" : "h-44")} />
+      {post.cover ? (
+        <div className={cx("border-b border-line bg-white p-4", size === "lg" ? "h-56" : "h-44")}>
+          <Image src={post.cover.src} alt={post.cover.alt} width={900} height={900} className="size-full object-contain transition-transform duration-300 group-hover:scale-105" />
+        </div>
+      ) : (
+        <ImageSlot label="Cover image" tone={post.category.length} icon={post.category.includes("meter") || post.category.includes("Water") ? "water" : "building"} className={cx("rounded-none", size === "lg" ? "h-56" : "h-44")} />
+      )}
       <div className="flex flex-1 flex-col p-6">
         <p className="text-xs font-bold uppercase tracking-[0.12em] text-navy-700">{post.category}</p>
         <h3 className={cx("mt-2 font-bold leading-snug text-ink", size === "lg" ? "text-xl" : "text-lg")}>{post.title}</h3>
