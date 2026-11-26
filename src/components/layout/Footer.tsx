@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
 import { footerColumns, site } from "@/lib/site";
 import { PhoneAppIcon, WhatsAppIcon } from "../app-icons";
 import { AddressMenu } from "./AddressMenu";
@@ -47,10 +46,12 @@ export function ChatButton() {
   return (
     <a
       href={site.whatsapp}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-5 right-5 z-30 inline-flex size-14 items-center justify-center gap-2 rounded-full bg-navy-900 text-[15px] font-semibold text-white shadow-lift transition-transform hover:-translate-y-0.5 sm:size-auto sm:min-h-12 sm:px-5"
     >
-      <MessageCircle className="size-6 text-accent sm:size-5" /> <span className="hidden sm:inline">Chat with us</span>
+      <WhatsAppIcon className="size-8 sm:size-7" /> <span className="hidden sm:inline">Chat with us</span>
     </a>
   );
 }
