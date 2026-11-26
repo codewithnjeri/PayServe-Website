@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import { StoryCard } from "@/components/story-card";
+import { stories } from "@/content/stories";
 import {
   ArrowRight, BarChart3, Bell, Building2, CheckCircle2, FileText, HandCoins, Headphones, Layers, MessageSquare,
   Receipt, ShieldCheck, Sparkles, Truck, Wallet, Warehouse, Briefcase,
@@ -27,11 +30,13 @@ const stats = [
   { value: "92%", label: "of invoices paid on time, up from 70% before PayServe" },
 ];
 
-const stories = [
-  { org: "Altura", type: "Mixed-use, Upper Hill", quote: "Before PayServe, we invoiced by hand and only knew who had paid once our accountant finished reconciling. By then it was too late to chase anyone. Now invoices go out on time every month, payments reach our account almost without effort, we spot late payers early, and we can see every unit's payment status as it happens.", who: "Altura, Upper Hill" },
-  { org: "Northlands Heights", type: "1,000+ homes", quote: "1,074 smart water meters on prepaid billing, service charge billed from each owner's handover date, and every transaction posted to Zoho.", who: "Results story" },
-  { org: "Sarit Center", type: "Commercial", quote: "Rent, service charge and utilities billed to every shop on the same day each month, with payments matched to each tenant.", who: "Results story" },
-  { org: "Mumwe Gardens", type: "Gated community", quote: "Prepaid water and service charge for every home, plus QR visitor access at the gate.", who: "Results story" },
+// Client photo tiles under the proof numbers. Photos live in public/images/projects.
+const clients = [
+  { name: "Altura", type: "Mixed-use", photo: "/images/projects/altura.jpg" },
+  { name: "Sarit Center", type: "Commercial", photo: "/images/projects/sarit-centre.jpg" },
+  { name: "Yaya Center", type: "Commercial", photo: "/images/projects/yaya-center.jpg" },
+  { name: "JJ Tower", type: "Mixed-use", photo: "/images/projects/jj-tower.jpg" },
+  { name: "Mumwe Gardens", type: "Gated community", photo: "/images/projects/mumwe-gardens.jpg" },
 ];
 
 const problems = [
@@ -184,11 +189,18 @@ export default function Home() {
               </div>
             ))}
           </dl>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-muted">
-            {["Altura", "Sarit Center", "Yaya Center", "JJ Tower", "Mumwe Gardens"].map((l) => (
-              <span key={l} className="font-display text-xl font-extrabold tracking-tight">{l}</span>
+          <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5" aria-label="PayServe clients">
+            {clients.map((c) => (
+              <li key={c.name} className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-navy-900 shadow-card last:col-span-2 last:aspect-[2/1] sm:last:col-span-1 sm:last:aspect-[4/5]">
+                <Image src={c.photo} alt={c.name} fill sizes="(min-width: 1024px) 230px, (min-width: 640px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                  <p className="font-display text-lg font-extrabold leading-tight">{c.name}</p>
+                  <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-accent">{c.type}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </Container>
       </section>
 
@@ -197,18 +209,7 @@ export default function Home() {
         <Heading eyebrow="Client stories" title="The engine that bills 5,878 units runs invoicing for any business." />
         <Carousel label="Client stories" className="mt-4">
           {stories.map((s, i) => (
-            <figure key={s.org} className={cx("flex w-[88%] shrink-0 snap-start flex-col rounded-3xl p-9 sm:w-[60%] lg:w-[46%]", i === 0 ? "bg-navy-900 text-white" : "border border-line bg-surface")}>
-              <p className={cx("text-xs font-bold uppercase tracking-[0.14em]", i === 0 ? "text-accent" : "text-navy-700")}>{s.org} · {s.type}</p>
-              <blockquote className={cx("mt-5 flex-1 font-display font-semibold leading-relaxed", i === 0 ? "text-xl" : "text-lg text-ink")}>
-                {i === 0 ? <>&ldquo;{s.quote}&rdquo;</> : s.quote}
-              </blockquote>
-              <figcaption className={cx("mt-6 text-sm", i === 0 ? "text-white/65" : "text-muted")}>{s.who}</figcaption>
-              {i === 0 && (
-                <Link href="/real-estate#case" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                  Read the Altura story <ArrowRight className="size-4" />
-                </Link>
-              )}
-            </figure>
+            <StoryCard key={s.slug} story={s} large={i === 0} className="w-[88%] shrink-0 snap-start sm:w-[60%] lg:w-[46%]" />
           ))}
         </Carousel>
       </Section>
