@@ -156,7 +156,7 @@ export function ReminderSchedule() {
   );
 }
 
-export function BrandMark({ brand }: { brand: Brand }) {
+export function BrandMark({ brand, large }: { brand: Brand; large?: boolean }) {
   const { name, logo, width, height, wordmark } = brand;
   const Fallback = name.startsWith("Open API") ? Code2 : Landmark;
   return (
@@ -168,31 +168,32 @@ export function BrandMark({ brand }: { brand: Brand }) {
           width={width}
           height={height}
           unoptimized
-          className={cx("w-auto rounded-md", wordmark ? "h-8" : "h-7")}
+          loading={large ? "eager" : undefined}
+          className={cx("w-auto rounded-md", large ? (wordmark ? "h-11" : "h-10") : wordmark ? "h-8" : "h-7")}
         />
       ) : (
-        <Fallback className="size-6 text-navy-700" aria-hidden />
+        <Fallback className={cx("text-navy-700", large ? "size-9" : "size-6")} aria-hidden />
       )}
       {!wordmark && name}
     </>
   );
 }
 
-function BrandChip({ brand }: { brand: Brand }) {
+function BrandChip({ brand, large }: { brand: Brand; large?: boolean }) {
   return (
-    <span className="inline-flex h-14 items-center gap-2.5 whitespace-nowrap rounded-xl border border-line bg-white px-5 font-display text-[15px] font-bold text-navy-900">
-      <BrandMark brand={brand} />
+    <span className={cx("inline-flex items-center whitespace-nowrap rounded-xl border border-line bg-white font-display font-bold text-navy-900", large ? "h-20 gap-3 px-7 text-lg" : "h-14 gap-2.5 px-5 text-[15px]")}>
+      <BrandMark brand={brand} large={large} />
     </span>
   );
 }
 
-function Marquee({ items, reverse, label }: { items: Brand[]; reverse?: boolean; label: string }) {
+function Marquee({ items, reverse, label, large }: { items: Brand[]; reverse?: boolean; label: string; large?: boolean }) {
   return (
     <div className="marquee marquee-mask overflow-hidden" aria-label={label}>
       <div className="marquee-track flex w-max animate-marquee gap-3" style={reverse ? { animationDirection: "reverse" } : undefined}>
         {[0, 1].map((k) => (
           <div key={k} className="flex gap-3" aria-hidden={k === 1 ? true : undefined}>
-            {items.map((b) => <BrandChip key={b.name} brand={b} />)}
+            {items.map((b) => <BrandChip key={b.name} brand={b} large={large} />)}
           </div>
         ))}
       </div>
@@ -200,8 +201,8 @@ function Marquee({ items, reverse, label }: { items: Brand[]; reverse?: boolean;
   );
 }
 
-export function BankMarquee() {
-  return <Marquee items={banks} label="M-Pesa and Kenya's major banks" />;
+export function BankMarquee({ large }: { large?: boolean }) {
+  return <Marquee items={banks} label="M-Pesa and Kenya's major banks" large={large} />;
 }
 
 export function IntegrationsMarquee() {

@@ -6,10 +6,10 @@ import {
 import { Button, CheckList, Container, cx, Heading, Section, TextLink } from "@/components/ui";
 import { AgingDashboard, ImageSlot, MeterTile, PhoneReminder, QrPass, RentRoll } from "@/components/visuals";
 import {
-  BankMarquee, BlogStrip, BrandMark, CtaBand, Faq, IntegrationsMarquee, ProjectsCarousel, ReminderSchedule,
+  BankMarquee, BlogStrip, CtaBand, Faq, IntegrationsMarquee, ProjectsCarousel, ReminderSchedule,
 } from "@/components/sections";
 import { Carousel } from "@/components/interactive";
-import { banks, faqs, insightBullets, ontimeBullets, site } from "@/lib/site";
+import { faqs, insightBullets, ontimeBullets, site } from "@/lib/site";
 import { posts } from "@/content/posts";
 
 const realEstateSolutions = [
@@ -123,12 +123,9 @@ export default function Home() {
         </Container>
 
         <div className="relative border-t border-line bg-white">
-          <Container className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-6">
-            <p className="text-sm text-body">Connected to M-Pesa and Kenya&apos;s major banks · Invoices issued through KRA eTIMS</p>
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-3 font-display text-[15px] font-bold text-navy-900">
-              {banks.slice(0, 5).map((b) => <li key={b.name} className="inline-flex items-center gap-2 whitespace-nowrap"><BrandMark brand={b} /></li>)}
-              <li className="text-sm font-semibold text-muted">+ 10 more banks</li>
-            </ul>
+          <Container className="py-8">
+            <p className="text-center font-display text-lg font-bold text-ink">Trusted by leading African companies</p>
+            <div className="mt-6"><BankMarquee large /></div>
           </Container>
         </div>
       </section>
