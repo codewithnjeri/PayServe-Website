@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { MapPin, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { footerColumns, site } from "@/lib/site";
+import { PhoneAppIcon, WhatsAppIcon } from "../app-icons";
+import { AddressMenu } from "./AddressMenu";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -14,9 +16,9 @@ export function Footer() {
               Invoicing, reminders and collections for businesses that send a lot of invoices, plus smart meters and access control for property.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
-              <li className="flex gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-accent" /><span>{site.address.join(", ")}</span></li>
-              <li><a href={`tel:${site.phone.replace(/\s/g, "")}`} className="flex gap-3 hover:text-navy-800"><Phone className="size-4 text-accent" />{site.phone}</a></li>
-              <li><a href={site.whatsapp} className="flex gap-3 hover:text-navy-800"><MessageCircle className="size-4 text-accent" />WhatsApp us</a></li>
+              <li><AddressMenu /></li>
+              <li><a href={`tel:${site.phone.replace(/\s/g, "")}`} aria-label={`Call PayServe on ${site.phone}`} className="flex items-center gap-3 hover:text-navy-800"><PhoneAppIcon />{site.phone}</a></li>
+              <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with PayServe on WhatsApp" className="flex items-center gap-3 hover:text-navy-800"><WhatsAppIcon />WhatsApp us</a></li>
             </ul>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">

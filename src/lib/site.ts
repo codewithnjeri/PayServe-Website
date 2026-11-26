@@ -9,6 +9,8 @@ export const site = {
   urgentLine: "+254 7XX XXX XXX", // TODO: confirm urgent support line
   email: "hello@payserve.co.ke", // TODO: confirm
   address: ["6th Floor, Northern Tower", "Kenrail Towers, Ring Road", "Westlands, Nairobi"],
+  // Kenrail Towers on OpenStreetMap; used for the Google Maps and Uber direction links.
+  location: { name: "Kenrail Towers", lat: -1.2610509, lng: 36.8042602 },
   unitsBilled: "5,878",
 };
 
