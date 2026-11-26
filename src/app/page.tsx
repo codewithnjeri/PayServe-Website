@@ -1,16 +1,16 @@
 import Link from "next/link";
 import {
   ArrowRight, BarChart3, Bell, Building2, CheckCircle2, FileText, HandCoins, Headphones, Layers, MessageSquare,
-  Play, Receipt, ShieldCheck, Sparkles, Truck, Wallet, Warehouse, Briefcase,
+  Receipt, ShieldCheck, Sparkles, Truck, Wallet, Warehouse, Briefcase,
 } from "lucide-react";
-import { Button, CheckList, Confirm, Container, cx, Heading, Section, TextLink } from "@/components/ui";
+import { Button, CheckList, Container, cx, Heading, Section, TextLink } from "@/components/ui";
 import { AgingDashboard, ImageSlot, MeterTile, PhoneReminder, QrPass, RentRoll } from "@/components/visuals";
 import {
   BankMarquee, BlogStrip, BrandMark, CtaBand, Faq, IntegrationsMarquee, ProjectsCarousel, ReminderSchedule,
 } from "@/components/sections";
 import { Carousel } from "@/components/interactive";
 import { banks, faqs, insightBullets, ontimeBullets, site } from "@/lib/site";
-import { plannedPosts, posts } from "@/content/posts";
+import { posts } from "@/content/posts";
 
 const realEstateSolutions = [
   { group: "Metering and billing", title: "Smart Water Meters", head: "Bill every drop.", text: "Prepaid or postpaid water meters, read remotely and billed automatically. Common areas and irrigation are metered separately, and bulk supply is checked against metered use, so losses show up.", proof: "1,074 meters at Northlands Heights Apartments", href: "/smart-meters#water", cta: "Smart water meters", icon: "water" as const },
@@ -28,7 +28,7 @@ const stats = [
 ];
 
 const stories = [
-  { org: "Altura", type: "Mixed-use, Upper Hill", quote: "Before PayServe, we invoiced by hand and only knew who had paid once our accountant finished reconciling. By then it was too late to chase anyone. Now invoices go out on time every month, payments reach our account almost without effort, we spot late payers early, and we can see every unit's payment status as it happens.", who: "[Name], [Title], Altura · pending approval" },
+  { org: "Altura", type: "Mixed-use, Upper Hill", quote: "Before PayServe, we invoiced by hand and only knew who had paid once our accountant finished reconciling. By then it was too late to chase anyone. Now invoices go out on time every month, payments reach our account almost without effort, we spot late payers early, and we can see every unit's payment status as it happens.", who: "Altura, Upper Hill" },
   { org: "Northlands Heights", type: "1,000+ homes", quote: "1,074 smart water meters on prepaid billing, service charge billed from each owner's handover date, and every transaction posted to Zoho.", who: "Results story" },
   { org: "Sarit Center", type: "Commercial", quote: "Rent, service charge and utilities billed to every shop on the same day each month, with payments matched to each tenant.", who: "Results story" },
   { org: "Mumwe Gardens", type: "Gated community", quote: "Prepaid water and service charge for every home, plus QR visitor access at the gate.", who: "Results story" },
@@ -112,7 +112,7 @@ export default function Home() {
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-body">
               <li className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-accent" /> Live in 14 days</li>
               <li className="flex items-center gap-1.5"><CheckCircle2 className="size-4 text-accent" /> We import your customers for you</li>
-              <li><a href="#" className="flex items-center gap-1.5 hover:text-navy-800"><Play className="size-4 text-accent" /> Watch a 2-minute tour</a></li>
+              {/* TODO: add a "Watch a 2-minute tour" link here once the tour video exists. */}
             </ul>
           </div>
 
@@ -188,7 +188,6 @@ export default function Home() {
             ))}
           </dl>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-muted">
-            <span className="rounded-full border border-line px-4 py-1.5 text-sm"><Confirm>4.8 ★ on Google</Confirm> · PropTech Award 2025</span>
             {["Altura", "Sarit Center", "Yaya Center", "JJ Tower", "Mumwe Gardens"].map((l) => (
               <span key={l} className="font-display text-xl font-extrabold tracking-tight">{l}</span>
             ))}
@@ -206,10 +205,12 @@ export default function Home() {
               <blockquote className={cx("mt-5 flex-1 font-display font-semibold leading-relaxed", i === 0 ? "text-xl" : "text-lg text-ink")}>
                 {i === 0 ? <>&ldquo;{s.quote}&rdquo;</> : s.quote}
               </blockquote>
-              <figcaption className={cx("mt-6 text-sm", i === 0 ? "text-white/65" : "text-muted")}>{i === 0 ? <Confirm>{s.who}</Confirm> : s.who}</figcaption>
-              <Link href="/real-estate#case" className={cx("mt-4 inline-flex items-center gap-1.5 text-sm font-semibold", i === 0 ? "text-accent" : "text-navy-800")}>
-                Read the {i === 0 ? "Altura " : ""}story <ArrowRight className="size-4" />
-              </Link>
+              <figcaption className={cx("mt-6 text-sm", i === 0 ? "text-white/65" : "text-muted")}>{s.who}</figcaption>
+              {i === 0 && (
+                <Link href="/real-estate#case" className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                  Read the Altura story <ArrowRight className="size-4" />
+                </Link>
+              )}
             </figure>
           ))}
         </Carousel>
@@ -318,7 +319,7 @@ export default function Home() {
       </Section>
 
       {/* 11 · Blog */}
-      <BlogStrip title="Guides for getting paid on time" posts={[posts.paid, posts.meters, plannedPosts[0]]} />
+      <BlogStrip title="Guides for getting paid on time" posts={[posts.paid, posts.meters, posts.water]} />
 
       {/* 12 · Questions */}
       <Faq items={[faqs.billManager, faqs.collect, faqs.integrations, faqs.start, faqs.pricing, faqs.etims]} />

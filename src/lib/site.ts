@@ -115,15 +115,13 @@ export const resourcesMenu = {
       links: [
         { label: "Blog", href: "/blog" },
         { label: "Case Studies", href: "/#stories" },
-        { label: "Careers", href: "#" },
       ],
     },
     {
       title: "Support",
       links: [
-        { label: "Knowledge Base", href: "#" },
+        // TODO: add Knowledge Base and White Papers links once those pages exist.
         { label: "FAQs", href: "/#faq" },
-        { label: "White Papers", href: "#" },
         { label: "Support Tickets", href: "/support-resources/tickets" },
         { label: "Online Chat", href: site.whatsapp },
       ],
@@ -197,11 +195,10 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
     title: "Company",
     links: [
-      { label: "About PayServe", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "About PayServe", href: "/about" },
       { label: "Contact Us", href: "/book-demo" },
-      { label: "Privacy", href: "#" },
-      { label: "Terms", href: "#" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
     ],
   },
 ];
@@ -247,7 +244,7 @@ export const projects: { name: string; tags: string[]; image?: string }[] = [
   { name: "Mwalimu Kisaju", tags: ["Gated Communities", "Residential Buildings", "Utility Service Providers"], image: "/images/projects/mwalimu-kisaju.jpg" },
   { name: "Altura", tags: ["Mixed-use Developments", "Utility Service Providers"], image: "/images/projects/altura.jpg" },
   { name: "Northlands Heights", tags: ["Gated Communities", "Residential Buildings", "Utility Service Providers"], image: "/images/projects/northlands-heights.jpg" },
-  { name: "Yaya Center", tags: ["Commercial Buildings"], image: "/images/projects/yaya-centre.jpg" },
+  { name: "Yaya Center", tags: ["Commercial Buildings"], image: "/images/projects/yaya-center.jpg" },
   { name: "Nauras Towers", tags: ["Residential Buildings", "Utility Service Providers"], image: "/images/projects/nauras-towers.jpg" },
   { name: "Enkaang Apartments", tags: ["Residential Buildings"], image: "/images/projects/enkaang-apartments.jpg" },
   { name: "Amani Luxury Apartments", tags: ["Residential Buildings"], image: "/images/projects/amani-luxury-apartments.jpg" },

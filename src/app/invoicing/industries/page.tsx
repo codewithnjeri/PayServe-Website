@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BarChart3, Bell, FileText, HandCoins, RefreshCcw, ToggleRight } from "lucide-react";
-import { Button, Confirm, cx, Heading, Section, TextLink } from "@/components/ui";
+import { Button, cx, Heading, Section, TextLink } from "@/components/ui";
 import { ImageSlot, InvoiceRun } from "@/components/visuals";
 import { CtaBand, Faq, PageHero, Testimonial } from "@/components/sections";
 import { faqs, site } from "@/lib/site";
@@ -94,7 +94,7 @@ export default function IndustriesPage() {
           </div>
           <Testimonial
             quote="Manual invoicing meant late payments and slow reconciliation. With PayServe we spot late payers early and act fast, and our collections now arrive on time month after month."
-            who={<Confirm>[Name], [Title], Altura · draft, pending client approval</Confirm>}
+            who="Altura, Upper Hill"
             link={{ href: "/real-estate#case", label: "Read the Altura story" }}
           />
         </div>

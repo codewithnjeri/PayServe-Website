@@ -3,7 +3,7 @@ import {
   Building, Building2, CalendarCheck, Check, ClipboardList, Home, KeyRound, Minus, Receipt, ShoppingBag, Smartphone,
   Sparkles, Store, UserRound, Users, Wrench, Zap, Factory, Layers,
 } from "lucide-react";
-import { Button, Confirm, Heading, Section, TextLink } from "@/components/ui";
+import { Button, Heading, Section, TextLink } from "@/components/ui";
 import { ImageSlot, MeterTile, PhoneReminder, QrPass, RentRoll } from "@/components/visuals";
 import { BlogStrip, CtaBand, Faq, PageHero } from "@/components/sections";
 import { ProjectsWithFilter } from "@/components/projects-filter";
@@ -194,7 +194,7 @@ export default function RealEstatePage() {
             <blockquote className="mt-7 border-l-4 border-accent pl-5 font-display text-lg font-semibold leading-relaxed text-ink">
               &ldquo;Before PayServe, we only knew who had paid once our accountant finished reconciling. Now invoices go out on time, payments reach our account almost without effort, and we can see every unit&apos;s payment status as it happens.&rdquo;
             </blockquote>
-            <p className="mt-4 text-sm text-muted"><Confirm>[Name], [Title], Altura · draft, pending client approval</Confirm></p>
+            <p className="mt-4 text-sm text-muted">Altura, Upper Hill</p>
             <p className="mt-6 flex items-center gap-2 text-sm font-semibold text-navy-800"><Zap className="size-4 text-accent" /> Full story coming soon</p>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { ArrowRight, ChevronDown, Code2, Landmark, Quote } from "lucide-react";
 import type { ReactNode } from "react";
 import { banks, integrations, projects, reminderSchedule, site, type Brand } from "@/lib/site";
 import type { PostCard } from "@/content/types";
-import { Button, Confirm, Container, cx, Heading, Section } from "./ui";
+import { Button, Container, cx, Heading, Section } from "./ui";
 import { ImageSlot } from "./visuals";
 import { Carousel } from "./interactive";
 
@@ -201,7 +201,7 @@ export function BankMarquee() {
 export function IntegrationsMarquee() {
   return (
     <div>
-      <p className="mb-4 text-sm text-muted">Works with your finance system and CRM · <Confirm>live integrations to confirm</Confirm> · anything else connects through our open API or CSV</p>
+      <p className="mb-4 text-sm text-muted">Works with your finance system and CRM · anything else connects through our open API or CSV</p>
       <Marquee items={integrations} reverse label="Finance and CRM integrations" />
     </div>
   );

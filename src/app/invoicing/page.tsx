@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { ArrowRight, BarChart3, Bell, Check, FileText, HandCoins, Play } from "lucide-react";
+import { ArrowRight, BarChart3, Bell, Check, FileText, HandCoins } from "lucide-react";
 import { Button, CheckList, cx, Heading, Section, TextLink } from "@/components/ui";
 import { AgingDashboard, InvoiceRun, PhoneReminder } from "@/components/visuals";
 import { BlogStrip, CtaBand, Faq, IntegrationsMarquee, PageHero, ReminderSchedule } from "@/components/sections";
 import { Carousel } from "@/components/interactive";
 import { faqs, insightBullets, ontimeBullets, site } from "@/lib/site";
-import { plannedPosts, posts } from "@/content/posts";
+import { posts } from "@/content/posts";
 
 export const metadata: Metadata = {
   title: "PayServe OnTime: invoicing, reminders and collections",
@@ -43,7 +43,7 @@ export default function InvoicingPage() {
         intro="Send every invoice on time, follow up automatically, and choose whether PayServe collects for you."
         actions={<>
           <Button href="/book-demo" variant="accent" className="min-h-14 px-8 text-base">Book a Demo</Button>
-          <Button href="#tour" variant="outline" className="min-h-14 px-7 text-base"><Play className="size-4" /> Watch a 2-minute tour</Button>
+          {/* TODO: add a "Watch a 2-minute tour" button here once the tour video exists. */}
         </>}
         stats={[{ value: "14 days", label: "to go live, with your customers imported for you" }, { value: site.unitsBilled, label: "units already billed on PayServe" }]}
         visual={<div className="flex justify-center"><PhoneReminder /></div>}
@@ -136,7 +136,7 @@ export default function InvoicingPage() {
       </Section>
 
       <Faq items={[faqs.billManager, faqs.collect, faqs.integrations, faqs.start, faqs.pricing, faqs.etims]} />
-      <BlogStrip title="Read the guide" posts={[posts.paid, plannedPosts[0], plannedPosts[1]]} />
+      <BlogStrip title="Read the guide" posts={[posts.paid, posts.water, posts.meters]} />
       <CtaBand
         title="See it with your own numbers."
         text="Bring a month of invoices to your demo, and we will show you what PayServe would do with them."

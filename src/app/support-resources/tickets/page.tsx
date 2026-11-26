@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, HelpCircle, MessageCircle } from "lucide-react";
+import { HelpCircle, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui";
 import { site } from "@/lib/site";
 import { TicketsApp } from "./TicketsApp";
@@ -32,7 +32,7 @@ export default function TicketsPage() {
           <div className="rounded-3xl border border-line p-7">
             <p className="font-bold">Try these first</p>
             <ul className="mt-4 space-y-3 font-semibold text-navy-800">
-              <li><a href="#" className="inline-flex items-center gap-2"><BookOpen className="size-4" /> Knowledge base</a></li>
+              {/* TODO: add a Knowledge base link here once the knowledge base exists (BookOpen icon). */}
               <li><Link href="/#faq" className="inline-flex items-center gap-2"><HelpCircle className="size-4" /> FAQs</Link></li>
               <li><a href={site.whatsapp} className="inline-flex items-center gap-2"><MessageCircle className="size-4" /> Start online chat</a></li>
             </ul>

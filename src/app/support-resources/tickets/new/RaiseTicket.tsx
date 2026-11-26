@@ -36,7 +36,7 @@ export function RaiseTicket() {
         </ol>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link href="/support-resources/tickets" className="inline-flex min-h-11 items-center rounded-full bg-navy-900 px-6 font-semibold text-white">View my ticket</Link>
-          <a href="#" className="inline-flex min-h-11 items-center rounded-full border-2 border-navy-900 px-6 font-semibold text-navy-900">Browse the knowledge base</a>
+          {/* TODO: add a "Browse the knowledge base" button here once the knowledge base exists. */}
         </div>
       </div>
     );

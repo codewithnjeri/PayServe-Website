@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
-import { Confirm, Container } from "@/components/ui";
+import { MessageCircle } from "lucide-react";
+import { Container } from "@/components/ui";
 import { site } from "@/lib/site";
 import { RaiseTicket } from "./RaiseTicket";
 
@@ -34,7 +34,7 @@ export default function NewTicketPage() {
             <ul className="mt-4 space-y-3 text-sm">
               <li><a href={site.whatsapp} className="inline-flex items-center gap-2 hover:text-accent"><MessageCircle className="size-4 text-accent" /> Start online chat</a></li>
               <li><a href={site.whatsapp} className="inline-flex items-center gap-2 hover:text-accent"><MessageCircle className="size-4 text-accent" /> WhatsApp {site.phone}</a></li>
-              <li className="flex items-start gap-2"><Phone className="mt-0.5 size-4 shrink-0 text-accent" /><span>Supply off or gate down? Call the urgent line: <Confirm>{site.urgentLine}</Confirm></span></li>
+              {/* TODO: add the urgent phone line here once PayServe confirms the number. */}
             </ul>
           </div>
           <div className="rounded-3xl border border-line p-7">
@@ -44,7 +44,7 @@ export default function NewTicketPage() {
                 <div key={k} className="flex items-center gap-3"><span className={`size-2.5 rounded-full ${c}`} /><dt className="w-16 font-semibold">{k}</dt><dd className="text-body">{v}</dd></div>
               ))}
             </dl>
-            <p className="mt-4 text-xs text-muted">Business hours: Monday to Friday, 8am to 6pm, Saturday 9am to 1pm <Confirm>(est.)</Confirm></p>
+            {/* TODO: add business hours here once PayServe confirms them. */}
           </div>
           <div className="rounded-3xl border border-line bg-surface p-7">
             <p className="font-bold">Already raised a ticket?</p>

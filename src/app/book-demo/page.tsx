@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Gift, MessageCircle, PlayCircle } from "lucide-react";
-import { Confirm, Container } from "@/components/ui";
+import { MessageCircle } from "lucide-react";
+import { Container } from "@/components/ui";
 import { DemoForm } from "./DemoForm";
 import { site } from "@/lib/site";
 
@@ -22,17 +22,16 @@ export default function BookDemoPage() {
               <MessageCircle className="size-6 shrink-0 text-accent" />
               <span><b className="block">Prefer to talk now?</b><span className="text-body">WhatsApp us on {site.phone}</span></span>
             </a>
-            <a href="#" className="flex gap-4 rounded-2xl border border-line bg-white p-5 hover:bg-navy-50">
-              <PlayCircle className="size-6 shrink-0 text-accent" />
-              <span><b className="block">Want to look first?</b><span className="text-body">Watch a 2-minute tour</span></span>
-            </a>
+            {/* TODO: restore the "Want to look first? Watch a 2-minute tour" card (PlayCircle icon) once the tour video exists. */}
+            {/* TODO: restore the referral box once PayServe confirms the reward amount and terms (re-import Gift from lucide-react).
             <div className="flex gap-4 rounded-2xl border border-dashed border-line p-5">
               <Gift className="size-6 shrink-0 text-accent" />
               <span>
-                <b className="block">Refer a business, earn <Confirm>KES 10,000</Confirm></b>
-                <span className="text-body">Know a business that sends a lot of invoices? Introduce them, and earn <Confirm>KES 10,000</Confirm> when they sign up. <Confirm>Paid once they complete their first month.</Confirm></span>
+                <b className="block">Refer a business, earn KES 10,000</b>
+                <span className="text-body">Know a business that sends a lot of invoices? Introduce them, and earn KES 10,000 when they sign up. Paid once they complete their first month.</span>
               </span>
             </div>
+            */}
           </div>
           <div className="mt-10 border-t border-line pt-6">
             <p className="text-sm text-body">Trusted by property companies billing {site.unitsBilled} units across East Africa</p>

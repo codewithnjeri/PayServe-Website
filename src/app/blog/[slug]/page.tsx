@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronDown, Link2, Share2, MessageCircle } from "lucide-react";
 import { articles, posts } from "@/content/posts";
-import { Button, Confirm, Container } from "@/components/ui";
+import { Button, Container } from "@/components/ui";
 import { ImageSlot } from "@/components/visuals";
 import { PostCardView } from "@/components/sections";
 
@@ -40,7 +40,10 @@ export default async function ArticlePage({ params }: PageProps<"/blog/[slug]">)
             <div className="grid size-11 place-items-center rounded-full bg-navy-100 font-bold text-navy-800">PS</div>
             <div>
               <p className="font-semibold">PayServe team</p>
-              <p className="text-body">Reviewed by <Confirm>{a.reviewer}</Confirm> · Updated {a.updated} · {a.readTime}</p>
+              <p className="text-body">
+                {/* Placeholder reviewers like "[finance lead name, title]" are hidden until PayServe supplies a name. */}
+                {!a.reviewer.startsWith("[") && <>Reviewed by {a.reviewer} · </>}Updated {a.updated} · {a.readTime}
+              </p>
             </div>
             <div className="ml-auto flex items-center gap-2 text-body">
               <span>Share:</span>
