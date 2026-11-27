@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { footerColumns, site } from "@/lib/site";
-import { PhoneAppIcon, WhatsAppIcon } from "../app-icons";
+import { PhoneAppIcon, SocialLinks, WhatsAppIcon } from "../app-icons";
 import { AddressMenu } from "./AddressMenu";
 import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="border-t border-line bg-white text-body">
-      <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8">
+      <div className="mx-auto max-w-7xl px-5 pb-28 pt-16 sm:px-8 sm:pb-24">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_3fr]">
           <div>
             <Logo />
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>© PayServe. All rights reserved.</p>
-          <p>Invoices issued through KRA eTIMS · Connected to M-Pesa and Kenya&apos;s major banks</p>
+          <SocialLinks links={site.social} small />
         </div>
       </div>
     </footer>
