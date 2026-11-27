@@ -83,6 +83,11 @@ export default function Home() {
     <>
       {/* 01 · Hero */}
       <section className="border-b border-line bg-white relative overflow-hidden">
+        {/* Northlands Heights photo behind the hero; a white fade keeps the text readable. */}
+        <div className="absolute inset-0" aria-hidden>
+          <Image src="/images/projects/northlands-heights.jpg" alt="" fill sizes="100vw" loading="eager" className="object-cover" />
+          <div className="absolute inset-0 bg-white/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-white/90 lg:from-25% lg:via-white/55 lg:via-55% lg:to-white/5" />
+        </div>
         <Container className="relative grid items-center gap-14 pb-20 pt-16 lg:grid-cols-[1.1fr_1fr] lg:pb-28 lg:pt-20">
           <div className="animate-rise">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-sm font-semibold text-body">

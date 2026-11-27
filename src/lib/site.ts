@@ -15,9 +15,9 @@ export const site = {
 };
 
 // One source of truth for the offer bar and the Book a Demo confirmation.
-// TODO: confirm the real end date (wireframes disagreed: 30-day countdown vs 12 Nov 2026).
+// Turned off: the special offer bar is removed from the site. Set to true to bring both back.
 export const offer = {
-  enabled: true,
+  enabled: false,
   headline: "15% off all PayServe services.",
   detail: "Sign up within 30 days.",
   endsAt: "2026-12-05T23:59:59+03:00",
